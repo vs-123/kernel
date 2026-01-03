@@ -9,12 +9,12 @@ section .multiboot
 	dd MB_CHKSM
 
 section .text
-extern kernel_main
+extern kmain
 global _start
 
 _start:
 	mov esp, stack_top
-	call kernel_main
+	call kmain
 	cli
 
 .hang:
