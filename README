@@ -1,0 +1,24 @@
+~=~=~=~=~=~=
+|| KERNEL ||
+~=~=~=~=~=~=
+
+   A dead simple kernel in C.
+
+   No fancy tricks. No bells and whistles.
+   
+   Just pure, honest C.
+
+   This is not intended to be a fully-featured kernel,
+   just a fun toy.
+
+~=~=~=~=~=~=~
+|| LICENSE ||
+~=~=~=~=~=~=~
+
+   This project is licensed under:
+   	GNU Affero General Public License version 3.0 or later
+	
+   NO WARRANTY PROVIDED.
+
+   See LICENSE file for full terms, or visit https://www.gnu.org/licenses/agpl-3.0.en.html
+
