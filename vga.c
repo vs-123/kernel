@@ -6,9 +6,25 @@ volatile u16 *vga_buffer = (u16 *)0xB8000;
 void
 print (const char *s, u8 colour)
 {
-   for (int i = 0; s[i] != '\0'; i++)
+  int index = 0;
+   for (int i = 0; s[index] != '\0'; i++)
       {
-         vga_buffer[i] = (u16)colour << 8 | s[i];
+         switch (s[index])
+            {
+            case '\t':
+               vga_buffer[index] = 0 << 8 | 9;
+               break;
+            case '\n':
+               for (int j = i; j % 79 != 0; j++)
+                  {
+                     vga_buffer[j] = 0 << 8 | 10;
+		     i++;
+                  }
+	       break;
+            default:
+               vga_buffer[i] = (u16)colour << 8 | s[index];
+            }
+	 index++;
       }
 }
 
