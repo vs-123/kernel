@@ -1,5 +1,5 @@
-#include "types.h"
 #include "vga.h"
+#include "types.h"
 
 void
 kmain ()
