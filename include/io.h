@@ -7,6 +7,6 @@
 u8 inportb (u16 port);
 void outportb (u16 port, u8 value);
 
-void read_kbd(char *buffer);
+void read_kbd(char *buffer, u32 buffer_size);
    
 #endif /* K_IO_H */

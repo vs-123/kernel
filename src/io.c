@@ -54,7 +54,7 @@
    X (57, ' ')
 
 void
-read_kbd (char *buffer)
+read_kbd (char *buffer, u32 buffer_size)
 {
    int is_reading = 1;
    u8 i           = 0;
@@ -67,19 +67,22 @@ read_kbd (char *buffer)
 #define X(code, c)                                                            \
    case code:                                                                 \
       {                                                                       \
-         buffer[i] = c;                                                       \
-         print_char (c, 0x0F);                                                \
-         i++;                                                                 \
+         /* add the char only if we have room left in the buffer */           \
+         if (i + 1 <= buffer_size)                                            \
+            {                                                                 \
+               buffer[i] = c;                                                 \
+               print_char (c, 0x0F);                                          \
+               i++;                                                           \
+            }                                                                 \
       }                                                                       \
       break;
 
                switch (inportb (0x60))
                   {
                      KEYCODE_CHAR_LIST
-                     
+
                   case 28:
                      {
-                        print_char ('\n', 0x0F);
                         is_reading = 0;
                         i++;
                      }
@@ -94,4 +97,5 @@ read_kbd (char *buffer)
       }
 
    buffer[i] = '\0';
+   print_char ('\n', 0x0F);
 }

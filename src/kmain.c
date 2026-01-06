@@ -10,7 +10,7 @@ kmain ()
    print ("Enter name: ", 0x0F);
 
    char name[10];
-   read_kbd (name);
+   read_kbd (name, 10);
 
    print ("Hi, ", 0x0F);
    print (name, 0x0F);
