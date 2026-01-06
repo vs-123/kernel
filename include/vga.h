@@ -8,6 +8,7 @@
 #define CLEAR_CHAR 0x0020
 
 extern volatile u16 *vga_buffer;
+extern u32 vga_cursor;
 
 void print_char (char c, u8 colour);
 void print (const char *s, u8 colour);

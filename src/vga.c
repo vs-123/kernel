@@ -2,8 +2,7 @@
 #include "types.h"
 
 volatile u16 *vga_buffer = (u16 *)0xB8000;
-
-u32 cursor = 0;
+u32 vga_cursor = 0;
 
 void
 print_char (char c, u8 colour)
@@ -12,19 +11,19 @@ print_char (char c, u8 colour)
       {
       case '\t':
          {
-            cursor += 4;
+            vga_cursor += 4;
          }
          break;
       case '\n':
          {
-            cursor = ((cursor / 80) + 1) * 80 - 1;
+            vga_cursor = ((vga_cursor / 80) + 1) * 80 - 1;
          }
          break;
       default:
-         vga_buffer[cursor] = (u16)colour << 8 | c;
+         vga_buffer[vga_cursor] = (u16)colour << 8 | c;
          break;
       }
-   cursor++;
+   vga_cursor++;
 }
 
 void

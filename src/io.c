@@ -15,7 +15,6 @@
    X (11, '0')                                                                \
    X (12, '-')                                                                \
    X (13, '=')                                                                \
-   X (14, ' ')                                                                \
    X (15, '\t')                                                               \
    X (16, 'q')                                                                \
    X (17, 'w')                                                                \
@@ -81,12 +80,29 @@ read_kbd (char *buffer, u32 buffer_size)
                   {
                      KEYCODE_CHAR_LIST
 
+                     /* backspace key */
+                  case 14:
+                     {
+                        if (vga_cursor > 0)
+                           {
+                              vga_cursor--;
+                           }
+                        vga_buffer[vga_cursor] = 0x0F;
+                        if (i > 0)
+                           {
+                              i--;
+                           }
+                     }
+                     break;
+
+                     /* enter key */
                   case 28:
                      {
                         is_reading = 0;
                         i++;
                      }
                      break;
+
                   default:
                      {
                      }
