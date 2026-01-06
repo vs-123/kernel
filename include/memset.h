@@ -3,6 +3,6 @@
 
 #include "types.h"
 
-void memset(void *buf, int c, int size);
+void *memset(void *buf, int c, int size);
 
 #endif /* __K_MEMSET_H */

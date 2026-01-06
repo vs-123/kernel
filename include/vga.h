@@ -5,7 +5,7 @@
 
 /* 80x25 = 2000 */
 #define VGA_BUFFER_SIZE 2000
-#define CLEAR_CHAR 127   
+#define CLEAR_CHAR 0x0020
 
 extern volatile u16 *vga_buffer;
 

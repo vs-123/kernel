@@ -22,9 +22,9 @@ $(BUILD)boot.o: boot.asm
 	@echo "BUILDING ASM..."
 	nasm -f elf32 -o $@ $<
 
-$(BUILD)%.o: %.c
+$(BUILD)%.o: src/%.c
 	@echo "BUILDING $<..."
-	$(CC) $(CCOPTS) -c src$< -o $@
+	$(CC) $(CCOPTS) -c $< -o $@ -Iinclude/
 
 $(BUILD):
 	@mkdir -p $(BUILD)
