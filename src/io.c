@@ -55,8 +55,8 @@
 void
 read_kbd (char *buffer, u32 buffer_size)
 {
-   int is_reading = 1;
-   u8 i           = 0;
+   int is_reading           = 1;
+   u8 i                     = 0;
    u32 saved_vga_cursor_pos = vga_cursor;
 
    while (is_reading)
@@ -68,7 +68,7 @@ read_kbd (char *buffer, u32 buffer_size)
    case code:                                                                 \
       {                                                                       \
          /* add the char only if we have room left in the buffer */           \
-         if (i + 1 <= buffer_size)                                            \
+         if (i + 1 < buffer_size)                                            \
             {                                                                 \
                buffer[i] = c;                                                 \
                print_char (c, 0x0F);                                          \
@@ -84,8 +84,8 @@ read_kbd (char *buffer, u32 buffer_size)
                      /* backspace key */
                   case 14:
                      {
-
-                        if (vga_cursor > 0 && vga_cursor != saved_vga_cursor_pos)
+                        if (vga_cursor > 0
+                            && vga_cursor != saved_vga_cursor_pos)
                            {
                               vga_cursor--;
                            }
@@ -94,6 +94,7 @@ read_kbd (char *buffer, u32 buffer_size)
                            {
                               i--;
                            }
+                        buffer[i] = 0;
                      }
                      break;
 
