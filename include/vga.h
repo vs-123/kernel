@@ -9,6 +9,7 @@
 
 extern volatile u16 *vga_buffer;
 
+void print_char (char c, u8 colour);
 void print (const char *s, u8 colour);
 void clear_vga_buffer ();
 void clear_vga_buffer_range (const int start, const int end);
